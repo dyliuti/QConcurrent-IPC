@@ -28,6 +28,8 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 
 2.如果在没有事件循环的线程中调用deleteLater，则在线程结束时销毁该对象。
 
+3.在有事件循环的线程中调用deleteLater，则在线程中deleteLater对应事件前的所有pending events处理完后销毁该对象。
+
 **二：几种创建线程方式的区别：**
 
 1.QThread::create：线程中无事件循环。
