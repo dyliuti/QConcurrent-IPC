@@ -11,7 +11,6 @@ Widget::Widget(QWidget *parent) :
     qDebug() << "Ui thread : " << QThread::currentThread();
     // QThread::create默认也是没有事件循环的
     thread = QThread::create([](){
-
         QTimer * timer = new QTimer();
         connect(timer,&QTimer::timeout,[=](){
             qDebug() << "Time out . Running in thread : " << QThread::currentThread();

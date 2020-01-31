@@ -11,7 +11,6 @@ public:
     explicit Worker(QObject * receiver);
     ~Worker() override;
 
-
     // QRunnable interface
 public:
     void run() override;

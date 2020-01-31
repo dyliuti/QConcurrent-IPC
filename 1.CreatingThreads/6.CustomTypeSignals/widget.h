@@ -19,15 +19,10 @@ public:
 
 private slots:
     void on_startButton_clicked();
-
     void on_infoButton_clicked();
-
     void countDone();
-
     void currentCount(int value);
-
     void threadFinished();
-
     void currentNumberString(NumberedString ns);
 
 private:

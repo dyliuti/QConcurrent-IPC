@@ -9,8 +9,6 @@ public:
     enum {EventId = QEvent::User +1};
     ProgessEvent( int progress = 0);
 
-
-
     int progress() const;
 
 private:

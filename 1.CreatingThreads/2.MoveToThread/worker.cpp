@@ -15,16 +15,11 @@ Worker::~Worker()
 
 void Worker::doCounting()
 {
-
     qDebug() << "Worker counting method running in thread : " << QThread::currentThread();
-    //Code here is going to run in secondary/background thread
-
+    // 第二个线程函数
     for(int i{0} ; i < 1000000001 ; i++){
-
         double percentage = (i/ 1000000000.0) * 100.0;
-
         //qDebug() << "Percentage : " << percentage;
-
         if((i% 100000) ==0){
             emit currentCount(QVariant::fromValue(percentage).toInt());
         }

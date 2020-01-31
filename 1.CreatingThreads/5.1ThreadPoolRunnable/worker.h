@@ -10,7 +10,6 @@ public:
     explicit Worker();
     ~Worker() override;
 
-
     // QRunnable interface
 public:
     void run() override;

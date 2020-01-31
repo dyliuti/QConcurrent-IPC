@@ -54,7 +54,6 @@ void Widget::currentCount(int value)
 {
     ui->progressBar->setValue(value);
     ui->infoLabel->setText(QString::number(value));
-
 }
 
 void Widget::threadFinished()

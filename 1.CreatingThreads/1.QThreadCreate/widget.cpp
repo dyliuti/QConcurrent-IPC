@@ -8,8 +8,6 @@ void counting1(int count){
     }
 }
 
-
-
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -35,8 +33,6 @@ void Widget::counting()
 
 void Widget::on_startButton_clicked()
 {
-
-
     /*
     //0.Freeze the UI
     for(int i{0} ; i < 1000000 ; i ++){
@@ -45,20 +41,15 @@ void Widget::on_startButton_clicked()
                     " thread :" << QThread::currentThread() << " id : " <<
                     QThread::currentThreadId();
     }
-
     */
 
-
     /*
-    //1 .Global function
+    // 1.全局函数
     thread = QThread::create(counting1,10000);
     */
 
-
-
     /*
-    //2.Named lambda function
-
+    // 2.有名的lambada函数
     auto countlambda = [](int count){
         for(int i{0} ; i < count ; i ++){
             qDebug() << "countlambda counting...";
@@ -71,8 +62,7 @@ void Widget::on_startButton_clicked()
     thread = QThread::create(countlambda,1000000);
     */
 
-    //3. Non named lambda function
-
+    // 3. lambada函数
     thread = QThread::create([](){
         for(int i{0} ; i < 100000 ; i ++){
             qDebug() << "Counting : " << i <<
@@ -83,7 +73,7 @@ void Widget::on_startButton_clicked()
     });
 
 
-    //4.Member function, call from lamba function
+    // 4.在lambada中调用成员函数
     thread = QThread::create([=](){
         counting();
     });
@@ -97,14 +87,8 @@ void Widget::on_startButton_clicked()
         qDebug() << "Thread finished";
     });
 
-
     connect(thread,&QThread::finished,thread,&QThread::deleteLater);
-
     thread->start();
 
-
-
-
     qDebug() << "Clicked on the start button";
-
 }

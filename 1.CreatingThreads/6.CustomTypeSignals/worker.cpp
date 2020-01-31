@@ -15,20 +15,14 @@ Worker::~Worker()
 
 void Worker::doCounting()
 {
-
     qDebug() << "Worker counting method running in thread : " << QThread::currentThread();
-    //Code here is going to run in secondary/background thread
 
+    // 线程中执行的代码
     for(int i{0} ; i < 1000000001 ; i++){
-
         double percentage = (i/ 1000000000.0) * 100.0;
-
         //qDebug() << "Percentage : " << percentage;
-
         if((i% 100000) ==0){
-
             QString txt = "Hello " +QString::number(QVariant::fromValue(percentage).toInt());
-
             NumberedString ns(QVariant::fromValue(percentage).toInt(),txt);
 
             emit currentNumberString(ns);

@@ -11,7 +11,6 @@ public:
     NumberedString(int number , QString string);
 
     int number() const;
-
     QString string() const;
 
 private:

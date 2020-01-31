@@ -20,7 +20,6 @@ Widget::~Widget()
 void Widget::on_startButton_clicked()
 {
     Worker * worker = new Worker();
-
     QThreadPool::globalInstance()->start(worker);
 }
 

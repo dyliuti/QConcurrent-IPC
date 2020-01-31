@@ -17,7 +17,6 @@ public:
 
 private slots:
     void on_startButton_clicked();
-
     void on_infoButton_clicked();
 
 private:

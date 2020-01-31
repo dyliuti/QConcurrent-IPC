@@ -31,5 +31,4 @@ void WorkerThread::run()
 
     //不开启事件循环也没事，currentCount不是基于事件的函数，像QTimer::timerout就是基于事件循环的，不开启则发不出去
     //exec() ;
-
 }
