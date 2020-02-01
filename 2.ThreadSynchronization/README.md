@@ -1,6 +1,6 @@
 **“纸上得来终觉浅，绝知此事要躬行。”  —— 陆游**
 
-**"Practice，practice，practice and summary make perfect" —— dyliuti**
+**"Practice，practice，practice and summary makes perfect" —— dyliuti**
 
 ------
 

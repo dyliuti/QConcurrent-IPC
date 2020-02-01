@@ -1,6 +1,6 @@
 **“纸上得来终觉浅，绝知此事要躬行。”  —— 陆游**
 
-**"Practice，practice，practice and summary makes perfect" —— dyliuti**
+**"Practice，practice，practice and summary make perfect" —— dyliuti**
 
 ------
 
@@ -37,6 +37,8 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 2.QObject::moveToThread：线程自动带上事件循环。
 
 3.子类化QThread：通过有没执行exec()来决定是否开启事件循环。
+
+4.通过线程池中分配出一个线程。子类化QRunnable，并实现纯虚函数run()。无事件循环。
 
 **三：线程中数据反馈到主线程的几种方法：**
 

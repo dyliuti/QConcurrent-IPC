@@ -27,7 +27,7 @@ void Widget::on_startButton_clicked()
     worker->moveToThread(workerThread);
 
     connect(workerThread,&QThread::started,worker,&Worker::doCounting);
-    connect(worker,&Worker::currentNumberString,this,&Widget::currentNumberString, Qt::QueuedConnection); // Qt::QueuedConnection 为什么这里不用这个
+    connect(worker,&Worker::currentNumberString,this,&Widget::currentNumberString, Qt::QueuedConnection);
     connect(worker,&Worker::countDone,this,&Widget::countDone);
     connect(workerThread,&QThread::finished,worker,&Worker::deleteLater);
 
