@@ -19,15 +19,12 @@ void Thread::increment()
         // 基于事件的类应该只在一个线程中用
         //m_timer->stop();
         qDebug() << thread()->currentThread();
-        /* 告诉线程退出事件循环，但m_timer还在发送,使用下面的也有问题 */
+        /* 告诉线程退出事件循环，崩溃 */
         // thread()->quit();
     }
-
 }
 
 void Thread::run() {
-    //Managed thread
-
     qDebug() << "Run called on thread : " << QThread::currentThread();
     /* m_timer = new QTimer(this);不要这样写，父子对象不在同一个线程中，有问题的 */
     m_timer = new QTimer();

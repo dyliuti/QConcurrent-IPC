@@ -52,3 +52,16 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 
 **四：自定义类型通过信号与槽跨线程传送，需要先将该类型注册到元对象系统。**
 
+## 2.ThreadSynchronization
+
+**一：线程同步方法：**
+
+互斥量、读写锁、信号量、条件变量。多个线程共享的数据，且需要修改的需要做同步保护。
+
+## 3.ThreadSafetyReentrancy
+
+**一：线程反馈数据：**
+
+1.跨线程信号与槽连接要在发送数据前就连上，不然会丢失数据。
+
+2.基于事件的类应该只在一个线程中调用。如QTimer。

@@ -15,7 +15,6 @@ signals:
 public slots:
     void increment();
 
-    // QThread interface
 protected:
     void run() override;
 

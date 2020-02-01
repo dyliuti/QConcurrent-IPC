@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QThread>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -14,8 +15,6 @@ Widget::Widget(QWidget *parent) :
 
     producer = new Producer(this);
     ui->verticalLayout->addWidget(producer);
-
-    consumer = new Consumer();
     thread = new Thread(producer);
 
     connect(thread, &QThread::finished, [=](){
@@ -23,8 +22,10 @@ Widget::Widget(QWidget *parent) :
         QApplication::quit();
     });
 
+
+    // QThread::sleep(10);
     thread->start();
-    // 在链接前就进行生产，是有问题的，连接前，这些数据将会丢失
+    // 在链接前就进行生产，是有问题的，连接前，这些数据将会丢失,如把下面这句放在QThread::sleep上面测试下
     producer->startProduction();
 }
 
@@ -37,6 +38,5 @@ void Widget::closeEvent(QCloseEvent *event)
 {
     //停掉app前停止线程
     thread->quit();
-
     event->accept();
 }

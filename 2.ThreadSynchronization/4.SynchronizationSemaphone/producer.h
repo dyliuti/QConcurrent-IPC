@@ -18,7 +18,6 @@ signals:
 
 public slots:
 
-    // QThread interface
 protected:
     void run() override;
 
@@ -26,8 +25,8 @@ private:
     QVector<int> m_data_source;
     int * m_buffer;
     int m_BUFFER_SIZE;
-    QSemaphore * m_free_space;// Space where the producer can write data
-    QSemaphore * m_available_space;//Space where consumer can read data from
+    QSemaphore * m_free_space;// 生产者写入的缓存
+    QSemaphore * m_available_space;// 消费者可读取的缓存
     bool * m_at_end;
 };
 

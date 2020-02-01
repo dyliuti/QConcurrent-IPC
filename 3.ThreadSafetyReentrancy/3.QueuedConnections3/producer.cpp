@@ -10,10 +10,8 @@ Producer::Producer(QWidget *parent) : QPushButton(parent)
 
     m_timer = new QTimer(this);
     connect(m_timer,&QTimer::timeout,[=](){
-
         CustomData cd(22, &m_integer, "Produced data");
         emit data(cd);
-
     });
 }
 

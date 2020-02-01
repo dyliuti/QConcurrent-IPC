@@ -5,16 +5,13 @@ PrintWorker::PrintWorker(const QString & name,bool * stop,PrintDevice * printDev
     m_name(name),
     m_stop(stop),
     m_print_device(printDevice)
-
 {
 
 }
 
 void PrintWorker::run(){
     while (!(*m_stop)) {
-
         m_print_device->print(m_name);
         sleep(1);
-
     }
 }

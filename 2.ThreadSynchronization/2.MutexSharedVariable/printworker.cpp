@@ -8,9 +8,7 @@ PrintWorker::PrintWorker(QString name, bool * stop, PrintDevice * printDevice,QO
 }
 void PrintWorker:: run() {
     while(!*m_stop){
-
         m_print_device->print(m_name);
         sleep(1);
-
     }
 }

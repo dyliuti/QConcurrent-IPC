@@ -14,9 +14,7 @@ Widget::Widget(QWidget *parent) :
 
     producer = new Producer(this);
     ui->verticalLayout->addWidget(producer);
-
     consumer = new Consumer();
-
     thread = new QThread(this);
 
     // 预先连接两个对象的函数，可确保槽中不丢失任何来自信号中的数据
@@ -26,11 +24,9 @@ Widget::Widget(QWidget *parent) :
     // 删除后想用只能再次初始化，并移到新新线程中去
     connect(thread, &QThread::finished, consumer, &QObject::deleteLater);
 
-    // 生产者
+    // 消费者
     consumer->moveToThread(thread);
-
     thread->start();
-
 }
 
 Widget::~Widget()
@@ -40,8 +36,7 @@ Widget::~Widget()
 
 void Widget::closeEvent(QCloseEvent *event)
 {
-    //Quit thread before killing app
+    // app离开前先销毁线程
     thread->quit();
-
     event->accept();
 }

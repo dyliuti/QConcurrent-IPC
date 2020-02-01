@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 
     IncrementWorker incrementWorker(&stopFlag, &printDevice);
 
-
     white.start();
     black.start();
     incrementWorker.start();

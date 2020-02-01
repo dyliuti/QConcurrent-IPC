@@ -10,7 +10,6 @@ public:
     CustomData();
     CustomData(int integerArg, int* pointerArg, const QString& stringArg);
 
-
     int m_integer;
     int *m_pointer;
     QString m_string;

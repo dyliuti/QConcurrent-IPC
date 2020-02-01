@@ -18,7 +18,7 @@ signals:
 public slots:
     void pause();
     void resume();
-    // QThread interface
+
 protected:
     void run() override;
 

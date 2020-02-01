@@ -28,5 +28,4 @@ void Producer::run()
         /* 数据可用信号量 引用计数+1 */
         m_available_space->release();
     }
-
 }

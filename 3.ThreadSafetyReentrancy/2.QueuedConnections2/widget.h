@@ -24,7 +24,6 @@ private:
     Consumer * consumer;
     Thread * thread;
 
-    // QWidget interface
 protected:
     void closeEvent(QCloseEvent *event) override;
 };

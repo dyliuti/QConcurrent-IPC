@@ -18,8 +18,6 @@ private:
     bool * m_stop ;
     PrintDevice * m_print_device;
 
-
-    // QThread interface
 protected:
     void run() override;
 };

@@ -16,7 +16,6 @@ public slots:
 private:
     Producer * m_producer;
 
-    // QThread interface
 protected:
     void run() override;
 };

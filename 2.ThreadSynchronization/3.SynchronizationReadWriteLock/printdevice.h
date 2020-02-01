@@ -10,7 +10,6 @@ public:
     PrintDevice();
 
     void print(const QString  & text);
-
     void increment();
 
 private:
