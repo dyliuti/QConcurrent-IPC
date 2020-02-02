@@ -82,5 +82,7 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 
 3.这些函数都可同步等待他们完成或异步执行，可参考下面具体实例。
 
+**三：QFutureWatcher的progressValueChanged信号发射速率很低，主要是为了避免GUI事件循环超载。但结束的进度值肯定是会发送的。**
+
 ## 5.IPC
 

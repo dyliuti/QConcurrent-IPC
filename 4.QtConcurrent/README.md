@@ -22,13 +22,15 @@ QtConcurrent使快速编写Qt多线程程序成为可能，而无需使用低级
 
 2.QFutureWatcher::cancel并不是所有的异步计算都可以取消。例如，QtConcurrent::run()返回的QFuture不能被取消;但是由QtConcurrent::mappedReduced()返回的QFuture可以。
 
-**一：QtConcurrent::map、mapped、mappedReduce等：**
+**二：QtConcurrent::map、mapped、mappedReduce等：**
 
 1.mapReduced中的reduceFunction中的结果可自定，是模板参数T，此时future的result()与results()分别对应T与QLIst< T>。
 
 2.QtConcurrent中不带ed的函数，如map返回的是future<void>，模板参数是固定了，将结果都转换到void类型。而带ed的如mapped，mappedReduced是和函数中返回值类型或引用值类型相同的。  
 
 3.这些函数都可同步等待他们完成或异步执行，可参考下面具体实例。
+
+**三：QFutureWatcher的progressValueChanged信号发射速率很低，主要是为了避免GUI事件循环超载。但结束的进度值肯定是会发送的。**
 
 <br>
 
