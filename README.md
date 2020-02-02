@@ -74,7 +74,7 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 
 2.QFutureWatcher::cancel并不是所有的异步计算都可以取消。例如，QtConcurrent::run()返回的QFuture不能被取消;但是由QtConcurrent::mappedReduced()返回的QFuture可以。
 
-**一：QtConcurrent::map、mapped、mappedReduce、filter等：**
+**二：QtConcurrent::map、mapped、mappedReduce、filter等：**
 
 1.mapReduced中的reduceFunction中的结果可自定，是模板参数T，此时future的result()与results()分别对应T与QLIst< T>。
 

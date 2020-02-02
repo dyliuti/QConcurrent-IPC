@@ -52,7 +52,7 @@ QtConcurrent使快速编写Qt多线程程序成为可能，而无需使用低级
 
 **注意：**mappedReduced可同步，用waitForFinished 阻塞UI；也可异步，通过信号槽队列链接方式，链接&QFutureWatcher<void>::finished信号，不阻塞UI。注释了的代码就是同步的。mappedReduce效率比单线程高，验证结果如下：
 
-![https://github.com/dyliuti/QML/QConcurrent-IPC/图片/mappedReduced.png]()
+![mappedReduced与单线程比较](https://github.com/dyliuti/QConcurrent-IPC/blob/master/%E5%9B%BE%E7%89%87/mappedReduced.png)
 
 6.CuncurrentFilter：QtConcurrent::filter(Sequence &*sequence*, KeepFunctor *filterFunction*)遍历sequence，在原sequence中从头到尾保存符合条件的值。filterFunction中的参数为sequence的一项，函数作用就是比较sequence的一项与对应位置原序列中的一项谁大谁小。
 
