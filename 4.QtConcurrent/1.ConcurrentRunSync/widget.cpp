@@ -29,12 +29,11 @@ void Widget::heavyWork()
     }
 }
 
-
 void Widget::on_startButton_clicked()
 {
-    /* 在一个单独的线程中运行一个函数 */
-   future = QtConcurrent::run(heavyWork);
-    /* 在线程池中运行一个函数 可以看到指向线程的指针地址很多不一样的 */
+   /* 在一个单独的线程中运行一个函数 */
+   // future = QtConcurrent::run(heavyWork);
+   /* 在线程池中运行一个函数 可以看到指向线程的指针地址很多不一样的 */
    QThreadPool pool;
    future = QtConcurrent::run(&pool, heavyWork);
    // 将会阻塞直到线程执行完，等于同步了
@@ -42,21 +41,21 @@ void Widget::on_startButton_clicked()
    qDebug() << "Computation done!";
 }
 
-/* 有无future.waitForFinished()都没效果，不好用 */
+/* 有无future.waitForFinished()都没效果，因为是同步的，只有等线程中的执行完后才执行 */
 void Widget::on_cancelButton_clicked()
 {
     qDebug() << "Cancel......";
     future.cancel();
 }
 
-/* 有无future.waitForFinished()都没效果，不好用 */
+/* 有无future.waitForFinished()都没效果，因为是同步的，只有等线程中的执行完后才执行 */
 void Widget::on_pauseButton_clicked()
 {
     qDebug() << "Pause......";
     future.pause();
 }
 
-/* 有无future.waitForFinished()都没效果，不好用 */
+/* 有无future.waitForFinished()都没效果，因为是同步的，只有等线程中的执行完后才执行 */
 void Widget::on_resumeButton_clicked()
 {
     qDebug() << "Resume......";

@@ -11,18 +11,16 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
     qDebug() << "Ui thread : " <<QThread::currentThread();
 
-    // Populate int list with numbers
     for(int i{0} ; i < 100 ; i++){
         intList << QRandomGenerator::global()->bounded(1000);
     }
 
     qDebug() << "Before , item count : " << intList.count();
 
-    // Clear the lists
     ui->originalList->clear();
     ui->filteredList->clear();
 
-    // Populate original ui listWidget
+    // 显示原始列表中的值
     foreach (int value, intList) {
         ui->originalList->addItem(QString::number(value));
     }
@@ -50,7 +48,6 @@ void Widget::on_filterButton_clicked()
         return true;
     };
 
-    //Clear filtered list
     ui->filteredList->clear();
 
     future = QtConcurrent::filtered(intList,filter);
@@ -58,7 +55,7 @@ void Widget::on_filterButton_clicked()
 
     qDebug() << "synchronous : Work finished.";
 
-    //Get the results and use them
+    // 获取过滤后的结果
     QList<int> newList = future.results();
 
     qDebug() << "After , item count : " << newList.count();

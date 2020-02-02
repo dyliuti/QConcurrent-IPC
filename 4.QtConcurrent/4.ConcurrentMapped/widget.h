@@ -21,7 +21,6 @@ public:
 
 private slots:
     void on_modifyButton_clicked();
-
     void on_seeValuesButton_clicked();
 
 private:

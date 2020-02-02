@@ -18,33 +18,22 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
-
-    //Utility function that recursivily searches for files.
+    // 递归搜索文件.
     QStringList findFiles(const QString &startDir, const QStringList &filters);
 
-
-    //Single threaded
+    // 单线程
     QMap<QString, int> singleThreadedWordCount(const QStringList &files);
 
-
-    // countWords counts the words in a single file. This function is
-    // called in parallel by several threads and must be thread
-    // safe.This is the map function
+    // map function，计算一个文件中的单词数，由多个线程调用，必须线程安全。
     static QMap<QString, int> countWords(const QString &file);
 
-
-    // reduce adds the results from map to the final
-    // result. This functor will only be called by one thread
-    // at a time.
+    // reduce将map中的结果添加到最终结果。这个函子一次只能被一个线程调用。
     static void reduce(QMap<QString, int> &result, const QMap<QString, int> &w);
 
 private slots:
     void on_chooseDirButton_clicked();
-
     void on_singleThreadedButton_clicked();
-
     void on_mapReducedButton_clicked();
-
     void on_findFilesButton_clicked();
 
 private:

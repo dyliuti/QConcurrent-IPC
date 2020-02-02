@@ -10,7 +10,7 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
     qDebug() << "GUI Thread : " << QThread::currentThread();
-    //Populate list
+
     for( int i {0} ;  i < 30000 ; i++){
         list << i;
     }

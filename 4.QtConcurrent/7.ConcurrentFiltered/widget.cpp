@@ -11,29 +11,26 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
     qDebug() << "Ui thread : " <<QThread::currentThread();
 
-    //Populate int list with numbers
     for(int i{0} ; i < 100000 ; i++){
         intList << QRandomGenerator::global()->bounded(1000);
     }
 
     qDebug() << "Before , item count : " << intList.count();
 
-    // Clear the lists
     ui->originalList->clear();
     ui->filteredList->clear();
 
+    // 显示原始列表中的值
     foreach (int value, intList) {
         ui->originalList->addItem(QString::number(value));
     }
 
-    // Monitor work using QFutureWatcher
     connect(&futureWatcher, &QFutureWatcher<void>::started, [=](){
         qDebug() << "asynchronous : Work started.";
     });
 
     connect(&futureWatcher, &QFutureWatcher<void>::finished,[=](){
         qDebug() << "asynchronous : Work finished.";
-
         //Get the results and use them
         QList<int> newList = future.results();
 
@@ -62,7 +59,6 @@ void Widget::on_filterButton_clicked()
         return true;
     };
 
-    //Clear filtered list
     ui->filteredList->clear();
 
     /* 遍历list，在新的list中从头到尾保存符合条件的值 */

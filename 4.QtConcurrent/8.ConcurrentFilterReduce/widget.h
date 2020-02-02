@@ -20,7 +20,6 @@ public:
 
 private slots:
     void on_filterButton_clicked();
-
     void on_filterSpinBox_valueChanged(int arg1);
 
 private:
@@ -29,8 +28,6 @@ private:
     QList<int> intList;
     QFuture<int> future;
     QFutureWatcher<int> futureWatcher;
-
-
 };
 
 #endif // WIDGET_H

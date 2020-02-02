@@ -12,7 +12,6 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
     qDebug() << "Ui thread : " << QThread::currentThread();
 
-    //Monitor work using QFutureWatcher
     connect(&futureWatcher, &QFutureWatcher<void>::started,[=](){
         qDebug() << "asynchronous : Work started.";
 
@@ -23,9 +22,7 @@ Widget::Widget(QWidget *parent) :
         // qDebug() << "Result count : " << future.resultCount();
 
         int timeEllapsed = time.elapsed();
-
         QMap<QString, int> total = future.result();
-
         QString message = " Map Reduced \n Word count : " +
                 QString::number(total.keys().count()) +
                 " \n Time ellapsed : " + QString::number(timeEllapsed);
@@ -129,7 +126,6 @@ void Widget::on_singleThreadedButton_clicked()
 /* 当一个问题可以分解为很多子问题(在不同线程中处理)时，可以用这个。每个处理结果聚集时用reduceFunction进行聚集 */
 void Widget::on_mapReducedButton_clicked()
 {
-
     time.start();
 
     /* mapFunction并发，reduceFunction一次只能一个线程调用。两个都是回调函数  */

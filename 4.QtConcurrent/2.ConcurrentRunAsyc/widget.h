@@ -17,15 +17,12 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
-  static  QFuture<QVector<int>> heavyWorkWithReturn();
+    static  QFuture<QVector<int>> heavyWorkWithReturn();
 
 private slots:
     void on_startButton_clicked();
-
     void on_cancelButton_clicked();
-
     void on_pauseButton_clicked();
-
     void on_resumeButton_clicked();
 
 private:

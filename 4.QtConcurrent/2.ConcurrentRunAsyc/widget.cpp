@@ -18,7 +18,6 @@ Widget::Widget(QWidget *parent) :
         if(!watcher.isCanceled()){
             QVector<int> resultVector = watcher.result();
             qDebug() << "Number of items in resultVector : " << resultVector.count();
-
             for( int i{0}; i < resultVector.count(); i++){
                 qDebug() << " element [" << i << "] : " << resultVector[i];
             }
@@ -56,7 +55,6 @@ QFuture<QVector<int> > Widget::heavyWorkWithReturn()
 void Widget::on_startButton_clicked()
 {
     future =  heavyWorkWithReturn();
-
     watcher.setFuture(future);
 }
 
@@ -65,11 +63,11 @@ void Widget::on_cancelButton_clicked()
     watcher.cancel();
 }
 
-/* 没效果，不好用，用完后还有副作用（得做异常检验）*/
+/* 没效果，不好用，用完后不做异常校验（!watcher.isCanceled()）还有副作用 */
 void Widget::on_pauseButton_clicked()
 {
-    //watcher.setPaused(true);
-    watcher.pause();
+    watcher.setPaused(true);
+    //watcher.pause(); // 里面调用了setPaused(true)
 }
 
 void Widget::on_resumeButton_clicked()

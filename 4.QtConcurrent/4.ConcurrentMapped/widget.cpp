@@ -10,12 +10,11 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
     qDebug() << "GUI Thread : " << QThread::currentThread();
-    //Populate list
+
     for(int i {0} ;  i < 30000 ; i++){
         list << i;
     }
 
-    //Monitor work using QFutureWatcher
     connect(&futureWatcher, &QFutureWatcher<void>::started,[=](){
         qDebug() << "asynchronous : Work started.";
 
@@ -26,7 +25,6 @@ Widget::Widget(QWidget *parent) :
         qDebug() << "Result count : " << future.resultCount();
 
         //qDebug() << future.results();
-
         for( int i{0} ; i < future.resultCount(); i ++){
             qDebug() << "Result " << i << " :" << future.resultAt(i);
         }
@@ -71,7 +69,7 @@ void Widget::on_modifyButton_clicked()
 //    }
 }
 
-/* 因为future设置了同步，UI中的点积操作只有当future执行完后一并执行 */
+/* 若future设置了同步，UI中的点击操作只有当future执行完后才能执行 */
 void Widget::on_seeValuesButton_clicked()
 {
     qDebug() << "Modified value : " << list.last();

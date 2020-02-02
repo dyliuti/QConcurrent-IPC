@@ -65,3 +65,22 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 1.跨线程信号与槽连接要在发送数据前就连上，不然会丢失数据。
 
 2.基于事件的类应该只在一个线程中调用。如QTimer。
+
+## 4.QtConcurrent
+
+**一：QtConcurrent::run：**
+
+1.QtConcurrent::run()返回的QFuture不支持取消、暂停或进度报告。返回的QFuture只能用于查询函数的运行/完成状态和返回值。 
+
+2.QFutureWatcher::cancel并不是所有的异步计算都可以取消。例如，QtConcurrent::run()返回的QFuture不能被取消;但是由QtConcurrent::mappedReduced()返回的QFuture可以。
+
+**一：QtConcurrent::map、mapped、mappedReduce、filter等：**
+
+1.mapReduced中的reduceFunction中的结果可自定，是模板参数T，此时future的result()与results()分别对应T与QLIst< T>。
+
+2.QtConcurrent中不带ed的函数，如map返回的是future<void>，模板参数是固定了，将结果都转换到void类型。而带ed的如mapped，mappedReduced是和函数中返回值类型或引用值类型相同的。  
+
+3.这些函数都可同步等待他们完成或异步执行，可参考下面具体实例。
+
+## 5.IPC
+
