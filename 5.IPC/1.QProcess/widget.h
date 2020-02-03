@@ -18,18 +18,16 @@ public:
 
 private slots:
     void on_chooseButton_clicked();
-
     void on_startButton_clicked();
-
     void on_stopButton_clicked();
-
     void  finished(int exitCode, QProcess::ExitStatus exitStatus);
 
-
-    private:
-        Ui::Widget *ui;
+private:
     QString processPath;
     QProcess * mProcess;
+
+private:
+    Ui::Widget *ui;
 };
 
 #endif // WIDGET_H

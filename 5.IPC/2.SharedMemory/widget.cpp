@@ -19,7 +19,7 @@ Widget::~Widget()
 
 void Widget::on_loadImageButton_clicked()
 {
-    // Returns true if this process is attached to the shared memory segment.
+    // 如果该进程附加到共享内存段，则返回true
     if (sharedMemory.isAttached()){
         qDebug() << "Memory is attached, detaching";
         detach();

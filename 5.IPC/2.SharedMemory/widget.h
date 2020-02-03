@@ -18,7 +18,6 @@ public:
 
 private slots:
     void on_loadImageButton_clicked();
-
     void on_loadShareMemoryButton_clicked();
 
     void detach();

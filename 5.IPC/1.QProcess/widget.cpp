@@ -10,7 +10,6 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
 
     mProcess = new QProcess(this);
-
     connect(mProcess,&QProcess::started,[](){
         qDebug() << "Process started";
     });

@@ -49,7 +49,7 @@ void Widget::createFileIfNotExist()
 {
     QFile file(QString(QDir::tempPath() + "/sharedFile"));
     if(!file.exists()){
-        //Just opening the file will create it if it doesn't exist yet.
+        // 如果文件还不存在，打开它就会创建它。
         file.open(QFile::WriteOnly | QIODevice::Append);
     }
 }

@@ -14,10 +14,8 @@ Widget::Widget(QWidget *parent) :
     setWindowTitle("Client | Data Sender");
 
     m_socket->connectToHost("localhost", 4040);
-
     connect(m_socket, &QTcpSocket::connected, this, &Widget::socketReady);
     connect(m_socket,&QTcpSocket::stateChanged,this,&Widget::stateChanged);
-
 }
 
 Widget::~Widget()

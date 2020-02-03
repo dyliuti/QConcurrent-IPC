@@ -19,7 +19,6 @@ public:
 private slots :
     void socketReady();
     void stateChanged(QAbstractSocket::SocketState socketState);
-
     void on_lineEdit_textChanged(const QString &newText);
 
 private:

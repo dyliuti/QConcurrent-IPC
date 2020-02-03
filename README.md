@@ -86,3 +86,14 @@ connect(thread,&QThread::finished,thread,&QThread::deleteLater);
 
 ## 5.IPC
 
+**一：Qt进程间通信方式：**
+
+1.通过QProcess可拉起、关闭其它进程。
+
+2.通过对共享内存段的访问，QSharedMemory(只linux有效)提供了一种方法来锁定独占访问的内存 。
+
+3.采用TCP网络通信的方式(个人认为在Windows中是最佳选择)。
+
+4.采用文件作为中间媒介，进行通信。QFileSystemWatcher进行文件变动监测。
+
+5.Dbus(只linux有效，个人认为在Linux中是最佳选择，连端口都不需要开，安全)。
