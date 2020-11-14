@@ -1,13 +1,3 @@
-**“纸上得来终觉浅，绝知此事要躬行。”  —— 陆游**
-
-**"Practice，practice，practice and summary make perfect" —— dyliuti**
-
-------
-
-
-
-<br>
-
 **简介：**
 
 Qt线程API测试与总结，Qt跨进程通信API测试与总结。
